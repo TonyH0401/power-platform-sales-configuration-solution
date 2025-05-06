@@ -61,6 +61,39 @@
                     </row>
                   </rows>
                 </section>
+                <section name="null_section_5" id="89bd9db2-7ee5-4c45-be01-a0768ae0f852" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{eb79b706-7498-4bf4-adae-a943ae23b569}" rowspan="4" colspan="1" auto="false">
+                        <labels>
+                          <label description="Associated All Opportunities" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_new_3" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <RelationshipName>crff8_Stakeholder_Opportunity_Opportunity</RelationshipName>
+                            <TargetEntityType>opportunity</TargetEntityType>
+                            <ViewId>{C6F6FC1B-1B3E-E711-80E1-00155D871BB4}</ViewId>
+                            <ViewIds>{00000000-0000-0000-00AA-000010003000},{C6F6FC1B-1B3E-E711-80E1-00155D871BB4}</ViewIds>
+                            <VisualizationId>{AEEB6D0A-2482-DE11-9FF3-00155DA3B012}</VisualizationId>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
               </sections>
             </column>
             <column width="50%">
@@ -74,7 +107,7 @@
                     <row>
                       <cell locklevel="0" id="{e9792461-901c-430e-af23-7857f1bad902}" rowspan="4" colspan="1" auto="false" showlabel="true">
                         <labels>
-                          <label description="New SG control 1745319951085" languagecode="1033" />
+                          <label description="Associated Active Opportunity" languagecode="1033" />
                         </labels>
                         <control indicationOfSubgrid="true" id="Subgrid_new_1" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
                           <parameters>
@@ -88,6 +121,39 @@
                             <TargetEntityType>opportunity</TargetEntityType>
                             <ViewId>{00000000-0000-0000-00AA-000010003000}</ViewId>
                             <ViewIds>{00000000-0000-0000-00AA-000010003000}</ViewIds>
+                            <VisualizationId>{AEEB6D0A-2482-DE11-9FF3-00155DA3B012}</VisualizationId>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+                <section name="null_section_4" id="e9e14318-7179-4e51-bfda-3da2edcef15a" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{fd620956-1d64-4d26-afff-93febfbceb6b}" rowspan="4" colspan="1" auto="false">
+                        <labels>
+                          <label description="Associated Closed Opportunity" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_new_2" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <RelationshipName>crff8_Stakeholder_Opportunity_Opportunity</RelationshipName>
+                            <TargetEntityType>opportunity</TargetEntityType>
+                            <ViewId>{00000000-0000-0000-00AA-000010003006}</ViewId>
+                            <ViewIds>{00000000-0000-0000-00AA-000010003000},{00000000-0000-0000-00AA-000010003006}</ViewIds>
                             <VisualizationId>{AEEB6D0A-2482-DE11-9FF3-00155DA3B012}</VisualizationId>
                           </parameters>
                         </control>

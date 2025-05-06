@@ -894,6 +894,12 @@
         <Required type="26" schemaName="All Opportunities" displayName="All Opportunities" parentSchemaName="opportunity" parentDisplayName="Opportunity" solution="msdynce_Sales (9.0.4.0076)" id="{c6f6fc1b-1b3e-e711-80e1-00155d871bb4}">
           <package appName="msdynce_Sales" version="9.0.25041.10002">msdynce_SalesAnchor (9.0.25041.10002)</package>
         </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Stakeholder" id="{1ca10dc7-f79e-487d-a6e8-48859935093e}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="All Opportunities" displayName="All Opportunities" parentSchemaName="opportunity" parentDisplayName="Opportunity" solution="msdynce_Sales (9.0.4.0076)" id="{c6f6fc1b-1b3e-e711-80e1-00155d871bb4}">
+          <package appName="msdynce_Sales" version="9.0.25041.10002">msdynce_SalesAnchor (9.0.25041.10002)</package>
+        </Required>
         <Dependent type="60" displayName="Opportunities Dashboard" parentDisplayName="Opportunity" id="{f7e6d29b-1e3e-e711-80e1-00155d871bb4}" />
       </MissingDependency>
       <MissingDependency>
@@ -901,6 +907,12 @@
           <package appName="msdyn_AcceleratedSales" version="9.1.25041.10002">msdyn_AcceleratedSalesAnchor (9.1.25041.10002)</package>
         </Required>
         <Dependent type="80" schemaName="msdynce_saleshub" displayName="Sales Hub" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="26" schemaName="Closed Opportunities" displayName="Closed Opportunities" parentSchemaName="opportunity" parentDisplayName="Opportunity" solution="msdynce_Sales (9.0.4.0076)" id="{00000000-0000-0000-00aa-000010003006}">
+          <package appName="msdynce_Sales" version="9.0.25041.10002">msdynce_SalesAnchor (9.0.25041.10002)</package>
+        </Required>
+        <Dependent type="60" displayName="Information" parentDisplayName="Stakeholder" id="{1ca10dc7-f79e-487d-a6e8-48859935093e}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="26" schemaName="Closed Opportunities" displayName="Closed Opportunities" parentSchemaName="opportunity" parentDisplayName="Opportunity" solution="msdynce_Sales (9.0.4.0076)" id="{00000000-0000-0000-00aa-000010003006}">
