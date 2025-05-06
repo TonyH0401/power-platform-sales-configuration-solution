@@ -96,6 +96,7 @@
       <RootComponent type="60" id="{f7e6d29b-1e3e-e711-80e1-00155d871bb4}" />
       <RootComponent type="61" schemaName="crff8_customButoon" behavior="0" />
       <RootComponent type="61" schemaName="crff8_customButton" behavior="0" />
+      <RootComponent type="61" schemaName="crff8_dunelogo" behavior="0" />
       <RootComponent type="62" schemaName="crff8_SalesConfiguration" behavior="0" />
       <RootComponent type="62" schemaName="crff8_TestingPlugin" behavior="0" />
       <RootComponent type="62" schemaName="SalesHubSitemap" behavior="0" />
