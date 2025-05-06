@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{9340d7cb-d53c-4d5b-891b-abba0bf63b49}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="crff8_personnumber" select="1" icon="1" preview="1">
+        <row name="result" id="crff8_scpersonid">
+          <cell name="crff8_personnumber" width="193" />
+          <cell name="crff8_personname" width="116" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="crff8_scperson">
+          <attribute name="crff8_scpersonid" />
+          <attribute name="crff8_personnumber" />
+          <attribute name="createdon" />
+          <order attribute="crff8_personnumber" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="crff8_personname" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active SCPeople" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

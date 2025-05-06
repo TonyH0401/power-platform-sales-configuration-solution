@@ -1,0 +1,241 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "crff8_sharedcommondataserviceforapps_f0f15"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "5e3d2778-072c-42d2-a384-5a2f61c61a03"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "opportunity": {
+                  "type": "string"
+                },
+                "stakeholder": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "method": "POST",
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Parse_JSON_For_Opportunity_and_Stakeholder": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "997c7bbf-d036-4a85-a622-2fd69fbcf1ec"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@triggerBody()",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "opportunity": {
+                  "type": "string"
+                },
+                "stakeholder": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Compose_Opportunity": {
+          "runAfter": {
+            "Parse_JSON_For_Opportunity_and_Stakeholder": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9341fef6-65f5-404f-ad12-26f6ee59db85"
+          },
+          "type": "Compose",
+          "inputs": "@body('Parse_JSON_For_Opportunity_and_Stakeholder')?['opportunity']"
+        },
+        "Get_an_Opportunity_by_ID": {
+          "runAfter": {
+            "Compose_Opportunity": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "20927d9f-2574-41a5-a89b-eeee79f806a0"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "opportunities",
+              "recordId": "@outputs('Compose_Opportunity')"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Scope_For_Relate_Rows": {
+          "actions": {
+            "Apply_to_each": {
+              "foreach": "@body('Parse_JSON_For_Opportunity_and_Stakeholder')?['stakeholder']",
+              "actions": {
+                "Compose_Stakeholder": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "f9fcc11b-cec8-4467-a145-9d56f495e2b1"
+                  },
+                  "type": "Compose",
+                  "inputs": "@items('Apply_to_each')"
+                },
+                "Get_a_Stakeholder_by_ID": {
+                  "runAfter": {
+                    "Compose_Stakeholder": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "2e7e7cf0-1310-4735-b49c-36d2aed6f1e4"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "crff8_stakeholders",
+                      "recordId": "@outputs('Compose_Stakeholder')"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Relate_Opportunity_Stakeholder_Rows": {
+                  "runAfter": {
+                    "Get_a_Stakeholder_by_ID": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "051d4f5e-1b5a-4e15-be1f-d186fc91a7d1"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "AssociateEntities",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "opportunities",
+                      "recordId": "@outputs('Get_an_Opportunity_by_ID')?['body/opportunityid']",
+                      "associationEntityRelationship": "crff8_Stakeholder_Opportunity_Opportunity",
+                      "item/@odata.id": "@outputs('Get_a_Stakeholder_by_ID')?['body/@odata.id']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Compose_Relate_Opportunity_Stakeholder_Rows_Result": {
+                  "runAfter": {
+                    "Relate_Opportunity_Stakeholder_Rows": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "23170085-3532-4074-8072-64f9cf752a20"
+                  },
+                  "type": "Compose",
+                  "inputs": "@outputs('Relate_Opportunity_Stakeholder_Rows')"
+                }
+              },
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "1fdbb0d6-de54-403e-9eb6-99e82f3e4e0a"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Get_an_Opportunity_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "cc997834-058c-4c04-aa7b-eddb2a09b2ba"
+          },
+          "type": "Scope"
+        },
+        "Compose_Scope_For_Relate_Rows_Result": {
+          "runAfter": {
+            "Scope_For_Relate_Rows": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "6d399e24-be1b-47c1-8af6-8b9d46f188c8"
+          },
+          "type": "Compose",
+          "inputs": "@result('Scope_For_Relate_Rows')"
+        },
+        "Response": {
+          "runAfter": {
+            "Compose_Scope_For_Relate_Rows_Result": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "2de01015-8cde-445b-9843-1913079a9723"
+          },
+          "type": "Response",
+          "kind": "Http",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "success": true,
+              "message": "@outputs('Compose_Scope_For_Relate_Rows_Result')"
+            }
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

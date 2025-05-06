@@ -1,0 +1,32 @@
+<appaction uniquename="crff8__NewCommand!6d9acb0294d04bb4b9ff7ee7b1b793da!msdynce_saleshub!opportunity!0">
+  <appmoduleid>
+    <uniquename>msdynce_saleshub</uniquename>
+  </appmoduleid>
+  <buttonlabeltext default="Clone Record">
+    <label description="Clone Record" languagecode="1033" />
+  </buttonlabeltext>
+  <context>1</context>
+  <contextentity>
+    <logicalname>opportunity</logicalname>
+  </contextentity>
+  <contextvalue>opportunity</contextvalue>
+  <fonticon>AALinkedInLogo</fonticon>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>0</location>
+  <name>NewCommand!6d9acb0294d04bb4b9ff7ee7b1b793da</name>
+  <onclickeventjavascriptfunctionname>Example.alertOnLoad</onclickeventjavascriptfunctionname>
+  <onclickeventjavascriptparameters>[{"type":5}]</onclickeventjavascriptparameters>
+  <onclickeventjavascriptwebresourceid>
+    <webresourceid>df4e11af-641b-f011-998a-000d3a083fb8</webresourceid>
+  </onclickeventjavascriptwebresourceid>
+  <onclickeventtype>2</onclickeventtype>
+  <origin>0</origin>
+  <sequence>100100005.5000000000</sequence>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilitytype>0</visibilitytype>
+</appaction>

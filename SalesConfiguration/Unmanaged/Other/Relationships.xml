@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EntityRelationships xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <EntityRelationship Name="business_unit_crff8_scaccount" />
+  <EntityRelationship Name="business_unit_crff8_sccontact" />
+  <EntityRelationship Name="business_unit_crff8_scperson" />
+  <EntityRelationship Name="business_unit_crff8_stakeholder" />
+  <EntityRelationship Name="crff8_SCContact_crff8_SCAccount_crff8_SCAccount" />
+  <EntityRelationship Name="crff8_SCPerson_crff8_SCPerson_crff8_SCAccount" />
+  <EntityRelationship Name="crff8_Stakeholder_Opportunity_Opportunity" />
+  <EntityRelationship Name="lk_crff8_scaccount_createdby" />
+  <EntityRelationship Name="lk_crff8_scaccount_modifiedby" />
+  <EntityRelationship Name="lk_crff8_sccontact_createdby" />
+  <EntityRelationship Name="lk_crff8_sccontact_modifiedby" />
+  <EntityRelationship Name="lk_crff8_scperson_createdby" />
+  <EntityRelationship Name="lk_crff8_scperson_modifiedby" />
+  <EntityRelationship Name="lk_crff8_stakeholder_createdby" />
+  <EntityRelationship Name="lk_crff8_stakeholder_modifiedby" />
+  <EntityRelationship Name="owner_crff8_scaccount" />
+  <EntityRelationship Name="owner_crff8_sccontact" />
+  <EntityRelationship Name="owner_crff8_scperson" />
+  <EntityRelationship Name="owner_crff8_stakeholder" />
+  <EntityRelationship Name="team_crff8_scaccount" />
+  <EntityRelationship Name="team_crff8_sccontact" />
+  <EntityRelationship Name="team_crff8_scperson" />
+  <EntityRelationship Name="team_crff8_stakeholder" />
+  <EntityRelationship Name="user_crff8_scaccount" />
+  <EntityRelationship Name="user_crff8_sccontact" />
+  <EntityRelationship Name="user_crff8_scperson" />
+  <EntityRelationship Name="user_crff8_stakeholder" />
+</EntityRelationships>

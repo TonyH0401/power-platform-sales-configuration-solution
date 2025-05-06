@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>1</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{ec0e056f-adea-4cec-a8b5-e0abe222d98f}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="crff8_sccontactnumber" select="1" icon="1" preview="1">
+        <row name="result" id="crff8_sccontactid">
+          <cell name="crff8_sccontactnumber" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>4</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="crff8_sccontact">
+          <attribute name="crff8_sccontactid" />
+          <attribute name="crff8_sccontactnumber" />
+          <attribute name="createdon" />
+          <order attribute="crff8_sccontactnumber" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <filter type="or" isquickfindfields="1">
+            <condition attribute="crff8_sccontactnumber" operator="like" value="{0}" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Quick Find Active SCContacts" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>
