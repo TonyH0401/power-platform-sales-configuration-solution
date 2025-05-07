@@ -167,25 +167,25 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="entitlement" displayName="Entitlement" solution="msdynce_Service (9.0.5.56)">
-          <package appName="msdynce_Service" version="9.0.24124.1010">msdynce_ServiceAnchor (9.0.24124.1010)</package>
+          <package appName="msdynce_Service" version="9.0.25042.2000">msdynce_ServiceAnchor (9.0.25042.2000)</package>
         </Required>
         <Dependent type="80" schemaName="msdynce_saleshub" displayName="Sales Hub" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package appName="msdynce_Service" version="9.0.24124.1010">msdynce_ServiceAnchor (9.0.24124.1010)</package>
+          <package appName="msdynce_Service" version="9.0.25042.2000">msdynce_ServiceAnchor (9.0.25042.2000)</package>
         </Required>
         <Dependent type="62" schemaName="SalesHubSitemap" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="incident" displayName="Case" solution="msdynce_Service (9.0.5.56)">
-          <package appName="msdynce_Service" version="9.0.24124.1010">msdynce_ServiceAnchor (9.0.24124.1010)</package>
+          <package appName="msdynce_Service" version="9.0.25042.2000">msdynce_ServiceAnchor (9.0.25042.2000)</package>
         </Required>
         <Dependent type="80" schemaName="msdynce_saleshub" displayName="Sales Hub" />
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="incidentresolution" displayName="Case Resolution" solution="msdynce_Service (9.0.5.56)">
-          <package appName="msdynce_Service" version="9.0.24124.1010">msdynce_ServiceAnchor (9.0.24124.1010)</package>
+          <package appName="msdynce_Service" version="9.0.25042.2000">msdynce_ServiceAnchor (9.0.25042.2000)</package>
         </Required>
         <Dependent type="80" schemaName="msdynce_saleshub" displayName="Sales Hub" />
       </MissingDependency>
@@ -388,7 +388,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="1" schemaName="phonetocaseprocess" displayName="Phone To Case Process" solution="msdynce_Service (9.0.5.56)">
-          <package appName="msdynce_Service" version="9.0.24124.1010">msdynce_ServiceAnchor (9.0.24124.1010)</package>
+          <package appName="msdynce_Service" version="9.0.25042.2000">msdynce_ServiceAnchor (9.0.25042.2000)</package>
         </Required>
         <Dependent type="80" schemaName="msdynce_saleshub" displayName="Sales Hub" />
       </MissingDependency>
@@ -982,7 +982,7 @@
       </MissingDependency>
       <MissingDependency>
         <Required type="29" displayName="Phone to Case Process" solution="msdynce_Service (9.0.5.56)" id="{0ffbcde4-61c1-4355-aa89-aa1d7b2b8792}">
-          <package appName="msdynce_Service" version="9.0.24124.1010">msdynce_ServiceAnchor (9.0.24124.1010)</package>
+          <package appName="msdynce_Service" version="9.0.25042.2000">msdynce_ServiceAnchor (9.0.25042.2000)</package>
         </Required>
         <Dependent type="80" schemaName="msdynce_saleshub" displayName="Sales Hub" />
       </MissingDependency>
