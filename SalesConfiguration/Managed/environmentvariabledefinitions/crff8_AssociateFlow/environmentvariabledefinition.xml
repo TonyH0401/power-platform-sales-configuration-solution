@@ -1,5 +1,4 @@
 <environmentvariabledefinition schemaname="crff8_AssociateFlow">
-  <defaultvalue>https://prod-27.southeastasia.logic.azure.com:443/workflows/9a095ece2f71414ba3244cab5bd7d913/triggers/manual/paths/invoke?api-version=2016-06-01&amp;sp=%2Ftriggers%2Fmanual%2Frun&amp;sv=1.0&amp;sig=WvGhPBthO8aeiAFQYWY7d6QuI57U0AThSpSm0-eGgVY</defaultvalue>
   <displayname default="AssociateFlow">
     <label description="AssociateFlow" languagecode="1033" />
   </displayname>
