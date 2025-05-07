@@ -100,6 +100,8 @@
       <RootComponent type="62" schemaName="crff8_SalesConfiguration" behavior="0" />
       <RootComponent type="62" schemaName="crff8_TestingPlugin" behavior="0" />
       <RootComponent type="62" schemaName="SalesHubSitemap" behavior="0" />
+      <RootComponent type="66" schemaName="crff8_SampleNamespace.LinearInputControl" behavior="0" />
+      <RootComponent type="66" schemaName="crff8_SampleNamespace.LinearInputControlList" behavior="0" />
       <RootComponent type="80" schemaName="crff8_SalesConfiguration" behavior="0" />
       <RootComponent type="80" schemaName="crff8_TestingPlugin" behavior="0" />
       <RootComponent type="80" schemaName="msdynce_saleshub" behavior="0" />
@@ -1311,14 +1313,6 @@
         <Dependent type="62" schemaName="SalesHubSitemap" />
       </MissingDependency>
       <MissingDependency>
-        <Required type="66" schemaName="crff8_SampleNamespace.LinearInputControl" displayName="crff8_SampleNamespace.LinearInputControl" solution="Active" />
-        <Dependent type="60" displayName="Information" parentDisplayName="SCAccount" id="{133f816c-fb37-4750-8ca0-ddcaf9da4f2f}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="66" schemaName="crff8_SampleNamespace.LinearInputControlList" displayName="crff8_SampleNamespace.LinearInputControlList" solution="Active" />
-        <Dependent type="60" displayName="Opportunity" parentDisplayName="Opportunity" id="{a837e4a7-01b8-4f82-a475-be9abd67e667}" />
-      </MissingDependency>
-      <MissingDependency>
         <Required type="66" schemaName="Microsoft.PowerApps.PowerAppsOneGrid" displayName="Microsoft.PowerApps.PowerAppsOneGrid" solution="BaseCustomControlsCore (9.0.2504.1014)">
           <package appName="Base Custom Controls" version="9.0.2504.1014">BaseCustomControlsCore (9.0.2504.1014)</package>
         </Required>
@@ -1376,10 +1370,6 @@
       <MissingDependency>
         <Required type="connectionreference" displayName="crff8_sharedcommondataserviceforapps_f0f15" solution="Active" id.connectionreferencelogicalname="crff8_sharedcommondataserviceforapps_f0f15" />
         <Dependent type="29" displayName="flow-test-code" id="{eb95ef34-8021-f011-9989-0022485654ef}" />
-      </MissingDependency>
-      <MissingDependency>
-        <Required type="connectionreference" displayName="crff8_sharedgmail_a4644" solution="Active" id.connectionreferencelogicalname="crff8_sharedgmail_a4644" />
-        <Dependent type="29" displayName="email-pdf-opportunity-won" id="{0a4617d8-1f24-f011-8c4e-000d3ac6e6d2}" />
       </MissingDependency>
       <MissingDependency>
         <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.12)" id.uniquename="AppChannel">

@@ -17,6 +17,14 @@
   <EntityDataProviders />
   <CanvasApps />
   <connectionreferences>
+    <connectionreference connectionreferencelogicalname="crff8_sharedgmail_a4644">
+      <connectionreferencedisplayname>Gmail WorkflowTesting-a4644</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_gmail</connectorid>
+      <iscustomizable>1</iscustomizable>
+      <promptingbehavior>0</promptingbehavior>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
     <connectionreference connectionreferencelogicalname="crff8_sharedonedriveforbusiness_3e4be">
       <connectionreferencedisplayname>OneDrive for Business SalesConfiguration-3e4be</connectionreferencedisplayname>
       <connectorid>/providers/Microsoft.PowerApps/apis/shared_onedriveforbusiness</connectorid>
