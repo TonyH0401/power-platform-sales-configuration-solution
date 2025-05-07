@@ -1,0 +1,265 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "crff8_sharedcommondataserviceforapps_f0f15"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "38b0767c-0042-4dc1-a106-c9b56d30010e"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "account": {
+                  "type": "string"
+                },
+                "contact": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "method": "POST",
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Parse_JSON": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "4a50b0c4-f45b-4229-952a-681fbbd799c8"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@triggerBody()",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "account": {
+                  "type": "string"
+                },
+                "contact": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Get_an_account_row_by_ID": {
+          "runAfter": {
+            "Apply_to_each": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "616d705b-40a1-4d49-ab5a-31e1ec86a889"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "crff8_scaccounts",
+              "recordId": "@outputs('account_guid')"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Scope_Get_Contact_Row_By_Id": {
+          "actions": {
+            "Get_Contact_Row_By_Id": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "564c05b2-ac9f-4531-9697-91443d1d7627"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "crff8_sccontacts",
+                  "recordId": "@outputs('contact_guid')"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            }
+          },
+          "runAfter": {
+            "Get_an_account_row_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "0493a428-ba39-4e10-b621-4881679a05dc"
+          },
+          "type": "Scope"
+        },
+        "Compose_Status": {
+          "runAfter": {
+            "Scope_Get_Contact_Row_By_Id": [
+              "Succeeded",
+              "Failed",
+              "TimedOut"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "32684bdc-54bd-4e1a-9969-0f00c02bc902"
+          },
+          "type": "Compose",
+          "inputs": "@result('Scope_Get_Contact_Row_By_Id')[0]['status']"
+        },
+        "Condition": {
+          "actions": {
+            "Compose_Failed_Message": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "98fb6fae-7a2a-4de4-90fc-5bd9ddfafa02"
+              },
+              "type": "Compose",
+              "inputs": "@outputs('Get_Contact_Row_By_Id')?['body']?['error']?['message']"
+            },
+            "Response_Fail": {
+              "runAfter": {
+                "Compose_Failed_Message": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "c357d04c-2925-4313-8245-376a8a59d805"
+              },
+              "type": "Response",
+              "kind": "Http",
+              "inputs": {
+                "statusCode": 500,
+                "body": {
+                  "success": false,
+                  "message": "@outputs('Compose_Failed_Message')"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Compose_Status": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Response": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "bdac1532-5cff-490d-96d9-ef33fe2200c2"
+                },
+                "type": "Response",
+                "kind": "Http",
+                "inputs": {
+                  "statusCode": 200,
+                  "body": {
+                    "success": true,
+                    "message": "Test run success",
+                    "account": {
+                      "odataid": "@outputs('Get_an_account_row_by_ID')?['body/@odata.id']",
+                      "guid": "@outputs('Get_an_account_row_by_ID')?['body/crff8_scaccountid']",
+                      "number": "@outputs('Get_an_account_row_by_ID')?['body/crff8_scaccountnumber']"
+                    },
+                    "contact": {
+                      "odataid": "@outputs('Get_Contact_Row_By_Id')?['body/@odata.id']",
+                      "guid": "@outputs('Get_Contact_Row_By_Id')?['body/crff8_sccontactid']",
+                      "number": "@outputs('Get_Contact_Row_By_Id')?['body/crff8_sccontactnumber']"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Compose_Status')",
+              "Failed"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "197786da-6c4d-4a8a-b0be-3bd5a76a186e"
+          },
+          "type": "If"
+        },
+        "Apply_to_each": {
+          "foreach": "@outputs('contact_guid')",
+          "actions": {},
+          "runAfter": {
+            "contact_guid": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "3e6f70a0-0769-48ab-911f-2c020b9e6391"
+          },
+          "type": "Foreach"
+        },
+        "account_guid": {
+          "runAfter": {
+            "Parse_JSON": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "a85eaf90-3dfe-46b7-9aae-037f42b8fb9d"
+          },
+          "type": "Compose",
+          "inputs": "@body('Parse_JSON')?['account']"
+        },
+        "contact_guid": {
+          "runAfter": {
+            "account_guid": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "994a3b0a-77d7-435b-b130-36aae67b4335"
+          },
+          "type": "Compose",
+          "inputs": "@body('Parse_JSON')?['contact']"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

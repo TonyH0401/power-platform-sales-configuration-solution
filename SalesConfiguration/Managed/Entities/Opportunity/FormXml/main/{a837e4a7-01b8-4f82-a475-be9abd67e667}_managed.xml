@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{a837e4a7-01b8-4f82-a475-be9abd67e667}</formid>
+    <IntroducedVersion>5.0.0.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form shownavigationbar="true" showImage="false" maxWidth="1920" headerdensity="HighWithControls" solutionaction="Modified">
+      <tabs>
+        <tab name="Product_Line_Items" verticallayout="true" id="{79548060-31f7-4646-8c08-0296ecd4113b}" visible="true" expanded="true" IsUserDefined="0" ordinalvalue="2" solutionaction="Modified" />
+        <tab name="QUOTES" verticallayout="true" id="{af8380da-5492-4a69-8a36-b1beff121e95}" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true" ordinalvalue="3" solutionaction="Modified">
+          <columns>
+            <column width="100%" id="0">
+              <sections>
+                <section name="opportunityquotes" showlabel="false" showbar="false" id="{40e2e47e-716a-4fe8-9fc0-e0341303c7a3}" height="auto" IsUserDefined="0" layout="varheight" columns="11" ordinalvalue="0">
+                  <rows>
+                    <row>
+                      <cell colspan="2" rowspan="4" showlabel="false" auto="true" id="{dcb63b8d-f689-44b1-a009-292bff328340}" ordinalvalue="10000">
+                        <labels>
+                          <label description="Action Cards" languagecode="1033" solutionaction="Added" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab name="documents_sharepoint" id="{2A23BF76-D291-43BA-980B-738D39C68770}" IsUserDefined="0" locklevel="0" showlabel="true" expanded="true" ordinalvalue="4" solutionaction="Modified" />
+        <tab name="tab_5" id="b02b7404-e6d7-406d-9c36-5e856b4cf914" IsUserDefined="0" locklevel="0" showlabel="true" ordinalvalue="1" solutionaction="Added">
+          <labels>
+            <label description="Opportunity-Stakeholder" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%" id="0">
+              <sections>
+                <section name="tab_5_section_1" id="f841630a-283c-44a6-aaa6-9f569c4a0bcc" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" ordinalvalue="0">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{fe16a72f-913e-4ee8-ba28-9fe5ab13999b}" rowspan="4" colspan="1" auto="false" ordinalvalue="10000">
+                        <labels>
+                          <label description="Many-to-many Opportunity Stakeholder Sub-grid" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_new_2" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <RelationshipName>crff8_Stakeholder_Opportunity_Opportunity</RelationshipName>
+                            <TargetEntityType>crff8_stakeholder</TargetEntityType>
+                            <ViewId>{7206D922-EF9C-4195-9739-327A2855484F}</ViewId>
+                            <ViewIds>{7206D922-EF9C-4195-9739-327A2855484F}</ViewIds>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+                <section name="tab_5_section_3" id="c8997edc-ac95-4796-98c1-18e9ac4c6e2d" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115" ordinalvalue="1">
+                  <labels>
+                    <label description="Unlink Stakeholders" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{b37f907b-2c76-42ca-b22f-9e90ca5bd3d0}" colspan="1" rowspan="1" showlabel="false" ordinalvalue="10000">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="name" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="name" uniqueid="{e51afb1c-73d4-466f-9401-2c6d9c82ec03}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <controlDescriptions>
+        <controlDescription forControl="{393B71B2-4997-7135-242B-B0AC80DD1194}" solutionaction="Modified">
+          <customControl formFactor="0" name="Microsoft.PowerApps.PowerAppsOneGrid">
+            <parameters>
+              <data-set name="Items">
+                <ViewId>{01010DE7-749E-4FE6-8037-ACA560A4FCBE}</ViewId>
+                <columnsDefaultView />
+                <IsUserView>false</IsUserView>
+                <RelationshipName>product_opportunities</RelationshipName>
+                <TargetEntityType>opportunityproduct</TargetEntityType>
+                <EnableViewPicker>false</EnableViewPicker>
+                <FilteredViewIds>{01010DE7-749E-4FE6-8037-ACA560A4FCBE}</FilteredViewIds>
+              </data-set>
+              <EnableEditing static="true" type="Enum">no</EnableEditing>
+              <DisableChildItemsEditing static="true" type="Enum">no</DisableChildItemsEditing>
+              <EnableFiltering static="true" type="Enum">yes</EnableFiltering>
+              <EnableSorting static="true" type="Enum">yes</EnableSorting>
+              <EnableGrouping static="true" type="Enum">yes</EnableGrouping>
+              <EnableAggregation static="true" type="Enum">yes</EnableAggregation>
+              <EnableColumnMoving static="true" type="Enum">yes</EnableColumnMoving>
+              <EnableMultipleSelection static="true" type="Enum">yes</EnableMultipleSelection>
+              <EnableRangeSelection static="true" type="Enum">yes</EnableRangeSelection>
+              <EnableJumpBar static="true" type="Enum">no</EnableJumpBar>
+              <EnablePagination static="true" type="Enum">no</EnablePagination>
+              <EnableDropdownColor static="true" type="Enum">no</EnableDropdownColor>
+              <EnableStatusIcons static="true" type="Enum">yes</EnableStatusIcons>
+              <EnableTypeIcons static="true" type="Enum">no</EnableTypeIcons>
+              <NavigationTypesAllowed static="true" type="Enum">all</NavigationTypesAllowed>
+              <ReflowBehavior static="true" type="Enum">Reflow</ReflowBehavior>
+              <ShowAvatar static="true" type="Enum">yes</ShowAvatar>
+              <ShowFooter static="true" type="Enum">yes</ShowFooter>
+              <ShowColumnHeaders static="true" type="Enum">yes</ShowColumnHeaders>
+              <EnableStatusColumn static="true" type="Enum">yes</EnableStatusColumn>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="Microsoft.PowerApps.PowerAppsOneGrid">
+            <parameters>
+              <data-set name="Items">
+                <ViewId>{01010DE7-749E-4FE6-8037-ACA560A4FCBE}</ViewId>
+                <columnsDefaultView />
+                <IsUserView>false</IsUserView>
+                <RelationshipName>product_opportunities</RelationshipName>
+                <TargetEntityType>opportunityproduct</TargetEntityType>
+                <EnableViewPicker>false</EnableViewPicker>
+                <FilteredViewIds>{01010DE7-749E-4FE6-8037-ACA560A4FCBE}</FilteredViewIds>
+              </data-set>
+              <EnableEditing static="true" type="Enum">no</EnableEditing>
+              <DisableChildItemsEditing static="true" type="Enum">no</DisableChildItemsEditing>
+              <EnableFiltering static="true" type="Enum">yes</EnableFiltering>
+              <EnableSorting static="true" type="Enum">yes</EnableSorting>
+              <EnableGrouping static="true" type="Enum">yes</EnableGrouping>
+              <EnableAggregation static="true" type="Enum">yes</EnableAggregation>
+              <EnableColumnMoving static="true" type="Enum">yes</EnableColumnMoving>
+              <EnableMultipleSelection static="true" type="Enum">yes</EnableMultipleSelection>
+              <EnableRangeSelection static="true" type="Enum">yes</EnableRangeSelection>
+              <EnableJumpBar static="true" type="Enum">no</EnableJumpBar>
+              <EnablePagination static="true" type="Enum">no</EnablePagination>
+              <EnableDropdownColor static="true" type="Enum">no</EnableDropdownColor>
+              <EnableStatusIcons static="true" type="Enum">yes</EnableStatusIcons>
+              <EnableTypeIcons static="true" type="Enum">no</EnableTypeIcons>
+              <NavigationTypesAllowed static="true" type="Enum">all</NavigationTypesAllowed>
+              <ReflowBehavior static="true" type="Enum">Reflow</ReflowBehavior>
+              <ShowAvatar static="true" type="Enum">yes</ShowAvatar>
+              <ShowFooter static="true" type="Enum">yes</ShowFooter>
+              <ShowColumnHeaders static="true" type="Enum">yes</ShowColumnHeaders>
+              <EnableStatusColumn static="true" type="Enum">yes</EnableStatusColumn>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="Microsoft.PowerApps.PowerAppsOneGrid">
+            <parameters>
+              <data-set name="Items">
+                <ViewId>{01010DE7-749E-4FE6-8037-ACA560A4FCBE}</ViewId>
+                <columnsDefaultView />
+                <IsUserView>false</IsUserView>
+                <RelationshipName>product_opportunities</RelationshipName>
+                <TargetEntityType>opportunityproduct</TargetEntityType>
+                <EnableViewPicker>false</EnableViewPicker>
+                <FilteredViewIds>{01010DE7-749E-4FE6-8037-ACA560A4FCBE}</FilteredViewIds>
+              </data-set>
+              <EnableEditing static="true" type="Enum">no</EnableEditing>
+              <DisableChildItemsEditing static="true" type="Enum">no</DisableChildItemsEditing>
+              <EnableFiltering static="true" type="Enum">yes</EnableFiltering>
+              <EnableSorting static="true" type="Enum">yes</EnableSorting>
+              <EnableGrouping static="true" type="Enum">no</EnableGrouping>
+              <EnableAggregation static="true" type="Enum">no</EnableAggregation>
+              <EnableColumnMoving static="true" type="Enum">no</EnableColumnMoving>
+              <EnableMultipleSelection static="true" type="Enum">yes</EnableMultipleSelection>
+              <EnableRangeSelection static="true" type="Enum">yes</EnableRangeSelection>
+              <EnableJumpBar static="true" type="Enum">no</EnableJumpBar>
+              <EnablePagination static="true" type="Enum">no</EnablePagination>
+              <EnableDropdownColor static="true" type="Enum">no</EnableDropdownColor>
+              <EnableStatusIcons static="true" type="Enum">yes</EnableStatusIcons>
+              <EnableTypeIcons static="true" type="Enum">no</EnableTypeIcons>
+              <NavigationTypesAllowed static="true" type="Enum">all</NavigationTypesAllowed>
+              <ReflowBehavior static="true" type="Enum">Reflow</ReflowBehavior>
+              <ShowAvatar static="true" type="Enum">yes</ShowAvatar>
+              <ShowFooter static="true" type="Enum">yes</ShowFooter>
+              <ShowColumnHeaders static="true" type="Enum">yes</ShowColumnHeaders>
+              <EnableStatusColumn static="true" type="Enum">yes</EnableStatusColumn>
+            </parameters>
+          </customControl>
+          <customControl formFactor="-1" name="MscrmControls.Grid.GridControl">
+            <parameters>
+              <data-set name="Grid">
+                <ViewId>{01010DE7-749E-4FE6-8037-ACA560A4FCBE}</ViewId>
+                <columnsDefaultView />
+                <IsUserView>false</IsUserView>
+                <RelationshipName>product_opportunities</RelationshipName>
+                <TargetEntityType>opportunityproduct</TargetEntityType>
+                <EnableViewPicker>false</EnableViewPicker>
+                <FilteredViewIds>{01010DE7-749E-4FE6-8037-ACA560A4FCBE}</FilteredViewIds>
+              </data-set>
+              <data-set name="SubGrid">
+                <ViewId>{E175DFBF-8EAE-4AF2-9DD2-68C43C14D40F}</ViewId>
+                <IsUserView>false</IsUserView>
+                <TargetEntityType>opportunityproduct</TargetEntityType>
+                <SubGridParentId>parentbundleidref</SubGridParentId>
+              </data-set>
+              <EnableGroupBy static="true" type="Enum">yes</EnableGroupBy>
+              <EnableEditing static="true" type="Enum">yes</EnableEditing>
+              <ReflowBehavior static="true" type="Enum">GridOnly</ReflowBehavior>
+              <EnableFiltering static="true" type="Enum">yes</EnableFiltering>
+              <HideNestedGridColumnHeader static="true" type="Enum">yes</HideNestedGridColumnHeader>
+            </parameters>
+          </customControl>
+        </controlDescription>
+        <controlDescription forControl="{89cdfa42-12d4-4c8b-8a0d-009ce7e0332d}" solutionaction="Removed" />
+        <controlDescription forControl="{89cdfa42-12d4-4c8b-8a0d-009ce7e0332e}" solutionaction="Removed" />
+        <controlDescription forControl="{e51afb1c-73d4-466f-9401-2c6d9c82ec03}" solutionaction="Added">
+          <customControl id="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}">
+            <parameters>
+              <datafieldname>name</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl id="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}">
+            <parameters>
+              <datafieldname>name</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="crff8_SampleNamespace.LinearInputControlList">
+            <parameters>
+              <sampleProperty type="SingleLine.Text">name</sampleProperty>
+              <sampleText type="SingleLine.Text">opportunityid</sampleText>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="crff8_SampleNamespace.LinearInputControlList">
+            <parameters>
+              <sampleProperty type="SingleLine.Text">name</sampleProperty>
+              <sampleText type="SingleLine.Text">opportunityid</sampleText>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="crff8_SampleNamespace.LinearInputControlList">
+            <parameters>
+              <sampleProperty type="SingleLine.Text">name</sampleProperty>
+              <sampleText type="SingleLine.Text">opportunityid</sampleText>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+      <footer id="{cc08dce8-8f3f-476b-b53b-585a0b4a6be2}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left" solutionaction="Added">
+        <rows>
+          <row>
+            <cell id="{b66f2ca0-2183-4bc2-9545-f89c60584618}" showlabel="false" ordinalvalue="10000">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{83a64305-dbfa-439b-8845-fc22aba608ea}" showlabel="false" ordinalvalue="20001">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{37e607df-319c-42b6-8350-ad663c301497}" showlabel="false" ordinalvalue="30002">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+    </form>
+    <LocalizedNames>
+      <LocalizedName description="Opportunity" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Updated default Opportunity form" languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

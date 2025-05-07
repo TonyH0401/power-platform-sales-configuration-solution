@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{eafdddaf-dbae-414e-92c0-8d710d83d545}</savedqueryid>
+    <layoutxml>
+      <grid name="crff8_scaccounts" jump="crff8_scaccountnumber" select="1" icon="1" preview="1">
+        <row name="crff8_scaccount" id="crff8_scaccountid">
+          <cell name="crff8_scaccountnumber" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>2</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="crff8_scaccount">
+          <attribute name="crff8_scaccountid" />
+          <attribute name="crff8_scaccountnumber" />
+          <attribute name="createdon" />
+          <order attribute="crff8_scaccountnumber" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="SCAccount Associated View" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

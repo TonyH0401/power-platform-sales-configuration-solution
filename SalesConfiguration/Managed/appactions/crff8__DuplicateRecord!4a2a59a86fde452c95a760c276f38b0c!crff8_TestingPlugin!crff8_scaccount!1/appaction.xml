@@ -1,0 +1,37 @@
+<appaction uniquename="crff8__DuplicateRecord!4a2a59a86fde452c95a760c276f38b0c!crff8_TestingPlugin!crff8_scaccount!1">
+  <appmoduleid>
+    <uniquename>crff8_TestingPlugin</uniquename>
+  </appmoduleid>
+  <buttonlabeltext default="Duplicate Record">
+    <label description="Duplicate Record" languagecode="1033" />
+  </buttonlabeltext>
+  <context>1</context>
+  <contextentity>
+    <logicalname>crff8_scaccount</logicalname>
+  </contextentity>
+  <contextvalue>crff8_scaccount</contextvalue>
+  <fonticon>AALinkedInLogo</fonticon>
+  <hidden>0</hidden>
+  <iscustomizable>1</iscustomizable>
+  <isdisabled>0</isdisabled>
+  <isgrouptitlehidden>0</isgrouptitlehidden>
+  <location>1</location>
+  <name>DuplicateRecord!4a2a59a86fde452c95a760c276f38b0c</name>
+  <onclickeventjavascriptfunctionname>Example.buttonOnClick</onclickeventjavascriptfunctionname>
+  <onclickeventjavascriptparameters>[{"type":23},{"type":12}]</onclickeventjavascriptparameters>
+  <onclickeventjavascriptwebresourceid>
+    <webresourceid>251db443-c81c-f011-998a-000d3aa12cf4</webresourceid>
+  </onclickeventjavascriptwebresourceid>
+  <onclickeventtype>2</onclickeventtype>
+  <origin>0</origin>
+  <sequence>1000100005.5000000000</sequence>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <type>0</type>
+  <visibilityformulacomponentlibraryid>
+    <name>crff8_testingplugindefaultcommandlibrary_5b5aa</name>
+  </visibilityformulacomponentlibraryid>
+  <visibilityformulacomponentname>256779f57e2640bea2565f3508b533f3</visibilityformulacomponentname>
+  <visibilityformulafunctionname>Visible</visibilityformulafunctionname>
+  <visibilitytype>1</visibilitytype>
+</appaction>

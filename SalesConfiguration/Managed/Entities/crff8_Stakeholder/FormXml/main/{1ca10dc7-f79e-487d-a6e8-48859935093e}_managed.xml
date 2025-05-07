@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{1ca10dc7-f79e-487d-a6e8-48859935093e}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{a9058582-09c9-469c-a8c1-2d0069ca4db9}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="50%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{b4b637d2-eb58-4f73-9d77-aeda697ede4a}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{a0253411-b6be-43e7-8696-08063c4084ea}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="crff8_name" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="crff8_name" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d9d1c072-244b-4e77-8c59-7c9c38a25d96}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="crff8_role" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="crff8_role" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{84daa35e-13dd-4c66-bca5-528fa0e58973}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="crff8_contactinfo" classid="{ADA2203E-B4CD-49BE-9DDF-234642B43B52}" datafieldname="crff8_contactinfo" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{29db3c76-2e20-4639-bf25-0df26107f15c}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="crff8_internalcomment" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="crff8_internalcomment" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{3fc0f5af-ccdc-4c93-9f6d-cb4be210cf5b}" visible="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_5" id="89bd9db2-7ee5-4c45-be01-a0768ae0f852" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{eb79b706-7498-4bf4-adae-a943ae23b569}" rowspan="4" colspan="1" auto="false">
+                        <labels>
+                          <label description="Associated All Opportunities" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_new_3" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <RelationshipName>crff8_Stakeholder_Opportunity_Opportunity</RelationshipName>
+                            <TargetEntityType>opportunity</TargetEntityType>
+                            <ViewId>{C6F6FC1B-1B3E-E711-80E1-00155D871BB4}</ViewId>
+                            <ViewIds>{00000000-0000-0000-00AA-000010003000},{C6F6FC1B-1B3E-E711-80E1-00155D871BB4}</ViewIds>
+                            <VisualizationId>{AEEB6D0A-2482-DE11-9FF3-00155DA3B012}</VisualizationId>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="_section_940" id="eb5509a3-1510-4275-8a15-5dd5cc9bfe28" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{e9792461-901c-430e-af23-7857f1bad902}" rowspan="4" colspan="1" auto="false" showlabel="true">
+                        <labels>
+                          <label description="Associated Active Opportunity" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_new_1" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <RelationshipName>crff8_Stakeholder_Opportunity_Opportunity</RelationshipName>
+                            <TargetEntityType>opportunity</TargetEntityType>
+                            <ViewId>{00000000-0000-0000-00AA-000010003000}</ViewId>
+                            <ViewIds>{00000000-0000-0000-00AA-000010003000}</ViewIds>
+                            <VisualizationId>{AEEB6D0A-2482-DE11-9FF3-00155DA3B012}</VisualizationId>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+                <section name="null_section_4" id="e9e14318-7179-4e51-bfda-3da2edcef15a" IsUserDefined="0" locklevel="0" showlabel="false" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="New Section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{fd620956-1d64-4d26-afff-93febfbceb6b}" rowspan="4" colspan="1" auto="false">
+                        <labels>
+                          <label description="Associated Closed Opportunity" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_new_2" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <RelationshipName>crff8_Stakeholder_Opportunity_Opportunity</RelationshipName>
+                            <TargetEntityType>opportunity</TargetEntityType>
+                            <ViewId>{00000000-0000-0000-00AA-000010003006}</ViewId>
+                            <ViewIds>{00000000-0000-0000-00AA-000010003000},{00000000-0000-0000-00AA-000010003006}</ViewIds>
+                            <VisualizationId>{AEEB6D0A-2482-DE11-9FF3-00155DA3B012}</VisualizationId>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{d58d215a-8a2f-47df-8e26-99f6584045dc}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{d3a53632-55a7-40d2-ad8c-e9da048c9f03}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{3a39b952-f11c-40d1-a55a-ab4d2d723681}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{f96f6637-a42f-4564-be75-68c9885c8a30}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{f775cdb7-8842-4def-a6ac-6a5e11525a85}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{ed2b320d-5a60-4e92-9409-043dc66b6a68}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{e95949a1-786b-41fd-abc6-818846b8cfe8}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{fbc49ea0-1b21-4201-b16c-b01a46a8925c}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

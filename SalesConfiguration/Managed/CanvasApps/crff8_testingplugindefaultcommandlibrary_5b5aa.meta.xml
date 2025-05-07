@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CanvasApp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <Name>crff8_salesconfigurationdefaultcommandlibrary_4f20b</Name>
-  <AppVersion>2025-04-17T07:37:43Z</AppVersion>
+  <Name>crff8_testingplugindefaultcommandlibrary_5b5aa</Name>
+  <AppVersion>2025-04-18T19:36:23Z</AppVersion>
   <Status>Ready</Status>
   <CreatedByClientVersion>3.25041.10.0</CreatedByClientVersion>
   <MinClientVersion>0.0.0.0</MinClientVersion>
-  <Tags>{"primaryDeviceWidth":"640","primaryDeviceHeight":"1136","sienaVersion":"20250417T073637Z-3.25041.10.0","deviceCapabilities":"","supportsPortrait":"true","supportsLandscape":"false","primaryFormFactor":"Phone","publisherVersion":"3.25041.10.0","minimumRequiredApiVersion":"2.2.0","hasComponent":"true","hasUnlockedComponent":"true","isUnifiedRootApp":"false"}</Tags>
+  <Tags>{"primaryDeviceWidth":"640","primaryDeviceHeight":"1136","sienaVersion":"20250418T193438Z-3.25041.10.0","deviceCapabilities":"","supportsPortrait":"true","supportsLandscape":"false","primaryFormFactor":"Phone","publisherVersion":"3.25041.10.0","minimumRequiredApiVersion":"2.2.0","hasComponent":"true","hasUnlockedComponent":"true","isUnifiedRootApp":"false"}</Tags>
   <IsCdsUpgraded>0</IsCdsUpgraded>
   <GalleryItemId xsi:nil="true"></GalleryItemId>
   <BackgroundColor>rgba(0, 176, 240, 1)</BackgroundColor>
-  <DisplayName>SalesConfiguration_DefaultCommandLibrary</DisplayName>
+  <DisplayName>TestingPlugin_DefaultCommandLibrary</DisplayName>
   <Description xsi:nil="true"></Description>
   <CommitMessage>Saved by Command designer.</CommitMessage>
   <Publisher xsi:nil="true"></Publisher>
@@ -26,6 +26,6 @@
   <IntroducedVersion>1.0</IntroducedVersion>
   <CdsDependencies>{"cdsdependencies":[]}</CdsDependencies>
   <IsCustomizable>1</IsCustomizable>
-  <BackgroundImageUri>/CanvasApps/crff8_salesconfigurationdefaultcommandlibrary83658_BackgroundImageUri</BackgroundImageUri>
-  <DocumentUri>/CanvasApps/crff8_salesconfigurationdefaultcommandlibrary62129_DocumentUri.msapp</DocumentUri>
+  <BackgroundImageUri>/CanvasApps/crff8_testingplugindefaultcommandlibrary_5b5aa_BackgroundImageUri</BackgroundImageUri>
+  <DocumentUri>/CanvasApps/crff8_testingplugindefaultcommandlibrary_5b5aa_DocumentUri.msapp</DocumentUri>
 </CanvasApp>

@@ -1,0 +1,634 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "crff8_sharedcommondataserviceforapps_f0f15"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      },
+      "shared_wordonlinebusiness_1": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "crff8_sharedwordonlinebusiness_0608c"
+        },
+        "api": {
+          "name": "shared_wordonlinebusiness"
+        }
+      },
+      "shared_onedriveforbusiness": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "crff8_sharedonedriveforbusiness_4fdbb"
+        },
+        "api": {
+          "name": "shared_onedriveforbusiness"
+        }
+      },
+      "shared_gmail": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "crff8_sharedgmail_a4644"
+        },
+        "api": {
+          "name": "shared_gmail"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "When_a_row_is_added,_modified_or_deleted": {
+          "metadata": {
+            "operationMetadataId": "cbb56908-d7aa-4f47-8527-f51ec950692f"
+          },
+          "type": "OpenApiConnectionWebhook",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "SubscribeWebhookTrigger",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "subscriptionRequest/message": 3,
+              "subscriptionRequest/entityname": "opportunity",
+              "subscriptionRequest/scope": 4,
+              "subscriptionRequest/filteringattributes": "statecode"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        }
+      },
+      "actions": {
+        "Compose_State_Code": {
+          "runAfter": {
+            "Initialize_variable_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "7f7bb43e-5708-4171-a38c-b48cf5ef4bf0"
+          },
+          "type": "Compose",
+          "inputs": "@triggerOutputs()?['body/statecode']"
+        },
+        "Compose_Opportunity_GUID": {
+          "runAfter": {
+            "Initialize_variable_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "36c35412-2758-4cce-8c00-bda5aa3ecfe6"
+          },
+          "type": "Compose",
+          "inputs": "@triggerOutputs()?['body/opportunityid']"
+        },
+        "Compose_Status_Code": {
+          "runAfter": {
+            "Initialize_variable_2": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "492ddab6-9eb4-4dc8-9e2b-d2c8c818289d"
+          },
+          "type": "Compose",
+          "inputs": "@triggerOutputs()?['body/statuscode']"
+        },
+        "Condition_State_Code": {
+          "actions": {
+            "Get_an_Opportunity_row_by_ID": {
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "924d1219-e4ba-412e-9e22-2224c76f0b7c"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "opportunities",
+                  "recordId": "@outputs('Compose_Opportunity_GUID')",
+                  "$select": "name,actualvalue"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "List_Associate_Stakeholder_rows": {
+              "runAfter": {
+                "Compose_Opportunity_Revenue": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "76758c7d-492f-44fd-9e69-d2850ac30310"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "crff8_stakeholder_opportunityset",
+                  "$filter": "opportunityid eq @{triggerOutputs()?['body/opportunityid']}"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each": {
+              "foreach": "@outputs('List_Associate_Stakeholder_rows')?['body/value']",
+              "actions": {
+                "Get_a_Stakeholder_row_by_ID": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "ca1ec2b1-b0c8-4c44-99f1-2ea408f5c044"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "crff8_stakeholders",
+                      "recordId": "@items('Apply_to_each')?['crff8_stakeholderid']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Compose_Stakeholder_Name": {
+                  "runAfter": {
+                    "Get_a_Stakeholder_row_by_ID": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "e201a220-2f1b-422a-a5ab-cf57e21351b8"
+                  },
+                  "type": "Compose",
+                  "inputs": "@outputs('Get_a_Stakeholder_row_by_ID')?['body/crff8_name']"
+                },
+                "Compose_Stakeholder_Contact": {
+                  "runAfter": {
+                    "Compose_Stakeholder_Name": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "fed39e87-bb76-4add-8704-a71bfe201909"
+                  },
+                  "type": "Compose",
+                  "inputs": "@outputs('Get_a_Stakeholder_row_by_ID')?['body/crff8_contactinfo']"
+                },
+                "Append_to_array_variable": {
+                  "runAfter": {
+                    "Compose_Stakeholder_Contact": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "e62625a2-7d4d-4509-add2-c415ec12a18c"
+                  },
+                  "type": "AppendToArrayVariable",
+                  "inputs": {
+                    "name": "StakeholderArray",
+                    "value": {
+                      "StakeholderName": "@outputs('Compose_Stakeholder_Name')",
+                      "StakeholderContact": "@outputs('Compose_Stakeholder_Contact')"
+                    }
+                  }
+                }
+              },
+              "runAfter": {
+                "List_Associate_Stakeholder_rows": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "69be8f56-b371-49f6-b5c4-2e71ac1ccb52"
+              },
+              "type": "Foreach"
+            },
+            "Populate_a_Microsoft_Word_template": {
+              "runAfter": {
+                "Apply_to_each_2": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "01FBY3S4FWTVHQ5QHX7JAJ2QECWSR56U64": "/word-template/random value.docx",
+                "operationMetadataId": "bbf0f762-557a-4da1-8fdb-11397728b64e",
+                "01FBY3S4FGV6WA2WLA2VDKXPRLJEJIGMN2": "/word-template/word-template.docx",
+                "01FBY3S4FYUQPLHOSX5ZC35BYV4FR53A2D": "/word-template/word-template-2.docx",
+                "01FBY3S4ACO6RHPEAGVRAZNQBAG5UQTMDL": "/word-template/word-template-3.docx",
+                "01FBY3S4AHP4MWACFT4FFKXLJQVVUXOK32": "/word-template/word-template-3.docx",
+                "01FBY3S4GCAFVUJG6PMBCJE3FGSRWNH65W": "/word-template/word-template-3.docx"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_wordonlinebusiness_1",
+                  "operationId": "CreateFileItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_wordonlinebusiness"
+                },
+                "parameters": {
+                  "source": "me",
+                  "drive": "b!tuQ7KRFAR0K8DdLhRp1TOmVP16i1zDNNoaff4gzgpk8wYwEXbcknQJcpINToUSec",
+                  "file": "01FBY3S4GCAFVUJG6PMBCJE3FGSRWNH65W",
+                  "dynamicFileSchema/777226518": "@outputs('Get_a_row_currency_by_ID')?['body/currencyname']",
+                  "dynamicFileSchema/883060724": "@outputs('Compose_Opportunity_Revenue')",
+                  "dynamicFileSchema/987287065": "@outputs('Compose_Opportunity_Name')",
+                  "dynamicFileSchema/1026835278": "@{outputs('Get_a_row_contact_by_ID')?['body/fullname']} (Email: @{outputs('Get_a_row_contact_by_ID')?['body/emailaddress1']}, Phone: @{outputs('Get_a_row_contact_by_ID')?['body/mobilephone']}) - @{outputs('Get_a_row_account_company_by_ID')?['body/name']} (Phone: @{outputs('Get_a_row_account_company_by_ID')?['body/telephone1']})",
+                  "dynamicFileSchema/1573933840": "@outputs('Compose_Opportunity_Name')",
+                  "dynamicFileSchema/1801263552": "@outputs('Compose_Opportunity_Name')",
+                  "dynamicFileSchema/-527572274": "@triggerOutputs()?['body/modifiedon']",
+                  "dynamicFileSchema/-1001273997": "@outputs('Compose_Opportunity_GUID')",
+                  "dynamicFileSchema/-87616832": "@variables('StakeholderArray')",
+                  "dynamicFileSchema/-723443362": "@variables('ProductArray')"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Create_file": {
+              "runAfter": {
+                "Populate_a_Microsoft_Word_template": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "146bd9c8-fb7a-4381-8d13-1f4b4d4bda2a"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_onedriveforbusiness",
+                  "operationId": "CreateFile",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_onedriveforbusiness"
+                },
+                "parameters": {
+                  "folderPath": "/word-create-file",
+                  "name": "[Close As Won Opportunity] @{outputs('Compose_Opportunity_Name')}-@{triggerOutputs()?['body/modifiedon']}.docx",
+                  "body": "@body('Populate_a_Microsoft_Word_template')"
+                },
+                "authentication": "@parameters('$authentication')"
+              },
+              "runtimeConfiguration": {
+                "contentTransfer": {
+                  "transferMode": "Chunked"
+                }
+              }
+            },
+            "Convert_file": {
+              "runAfter": {
+                "Create_file": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "a71a0f3d-791a-4aa3-9994-53b16f49ab5f"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_onedriveforbusiness",
+                  "operationId": "ConvertFile",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_onedriveforbusiness"
+                },
+                "parameters": {
+                  "id": "@outputs('Create_file')?['body/Id']",
+                  "type": "PDF"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Send_email_(V2)": {
+              "runAfter": {
+                "Convert_file": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "4c591081-0bfd-4498-a360-2f866f912e1d"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_gmail",
+                  "operationId": "SendEmailV2",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_gmail"
+                },
+                "parameters": {
+                  "emailMessage/To": "phugiale2912@gmail.com",
+                  "emailMessage/Subject": "[REPORT] Opportunity Close as Won Information",
+                  "emailMessage/Body": "<p>Greetings,<br>\n<br>\nThis is a summary report the the Opportunity: @{outputs('Compose_Opportunity_Name')} (@{outputs('Compose_Opportunity_GUID')}) which was marked as <strong>Closed as Won</strong>.<br>\n<br>\nPlease review the attached file for more information.<br>\n<br>\nBest regards.</p>",
+                  "emailMessage/Attachments": [
+                    {
+                      "Name": "@outputs('Convert_file')?['headers/x-ms-file-name']",
+                      "ContentBytes": "@body('Convert_file')"
+                    }
+                  ]
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Delete_file": {
+              "runAfter": {
+                "Send_email_(V2)": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "d378f60c-df86-4585-901c-bb6427387e6f"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_onedriveforbusiness",
+                  "operationId": "DeleteFile",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_onedriveforbusiness"
+                },
+                "parameters": {
+                  "id": "@outputs('Create_file')?['body/Id']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Compose_Opportunity_Name": {
+              "runAfter": {
+                "Get_an_Opportunity_row_by_ID": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "719c8cbf-3559-40ac-afbe-6aa96ef1012e"
+              },
+              "type": "Compose",
+              "inputs": "@outputs('Get_an_Opportunity_row_by_ID')?['body/name']"
+            },
+            "Compose_Opportunity_Revenue": {
+              "runAfter": {
+                "Compose_Opportunity_Name": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "82004989-8e37-4afb-9609-490eaab26c30"
+              },
+              "type": "Compose",
+              "inputs": "@outputs('Get_an_Opportunity_row_by_ID')?['body/actualvalue']"
+            },
+            "Get_a_row_currency_by_ID": {
+              "runAfter": {
+                "Apply_to_each": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "c30983e4-63ab-4b71-8933-aaa88987b890"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "transactioncurrencies",
+                  "recordId": "@triggerOutputs()?['body/_transactioncurrencyid_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_a_row_contact_by_ID": {
+              "runAfter": {
+                "Get_a_row_currency_by_ID": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "9eb47569-1f91-4f14-b69c-864ca3db75d5"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "contacts",
+                  "recordId": "@triggerOutputs()?['body/_parentcontactid_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Get_a_row_account_company_by_ID": {
+              "runAfter": {
+                "Get_a_row_contact_by_ID": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "eb39e70b-fc8f-48aa-85e4-355f39df3a47"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "GetItem",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "accounts",
+                  "recordId": "@outputs('Get_a_row_contact_by_ID')?['body/_parentcustomerid_value']"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "List_Opportunity_Product_rows": {
+              "runAfter": {
+                "Get_a_row_account_company_by_ID": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "ce6f3e11-d493-4abf-bc4a-6cf919a2d8a9"
+              },
+              "type": "OpenApiConnection",
+              "inputs": {
+                "host": {
+                  "connectionName": "shared_commondataserviceforapps",
+                  "operationId": "ListRecords",
+                  "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                },
+                "parameters": {
+                  "entityName": "opportunityproducts",
+                  "$filter": "_opportunityid_value eq @{triggerOutputs()?['body/opportunityid']}"
+                },
+                "authentication": "@parameters('$authentication')"
+              }
+            },
+            "Apply_to_each_2": {
+              "foreach": "@outputs('List_Opportunity_Product_rows')?['body/value']",
+              "actions": {
+                "Compose_Product_Name": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "71523b87-1e6f-4261-8204-0c34371faa02"
+                  },
+                  "type": "Compose",
+                  "inputs": "@items('Apply_to_each_2')?['opportunityproductname']"
+                },
+                "Compose_Product_Price": {
+                  "runAfter": {
+                    "Compose_Product_Name": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "21ced243-c8c5-4813-9a75-f26ad8099df7"
+                  },
+                  "type": "Compose",
+                  "inputs": "@items('Apply_to_each_2')?['priceperunit']"
+                },
+                "Compose_Product_Quantity": {
+                  "runAfter": {
+                    "Compose_Product_Price": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "3f7e219f-29a3-486f-835b-dd7eb98c5831"
+                  },
+                  "type": "Compose",
+                  "inputs": "@items('Apply_to_each_2')?['quantity']"
+                },
+                "Append_to_array_variable_2": {
+                  "runAfter": {
+                    "Compose_Product_Quantity": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "8c44e4f8-1cdf-4dbc-b225-88381cdb0852"
+                  },
+                  "type": "AppendToArrayVariable",
+                  "inputs": {
+                    "name": "ProductArray",
+                    "value": {
+                      "ProductName": "@outputs('Compose_Product_Name')",
+                      "ProductPriceUnit": "@outputs('Compose_Product_Price')",
+                      "ProductQuantity": "@outputs('Compose_Product_Quantity')"
+                    }
+                  }
+                }
+              },
+              "runAfter": {
+                "List_Opportunity_Product_rows": [
+                  "Succeeded"
+                ]
+              },
+              "metadata": {
+                "operationMetadataId": "5eda82cf-27d3-4cc2-a485-028a3ac267ce"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Compose_State_Code": [
+              "Succeeded"
+            ],
+            "Compose_Opportunity_GUID": [
+              "Succeeded"
+            ],
+            "Compose_Status_Code": [
+              "Succeeded"
+            ]
+          },
+          "else": {
+            "actions": {
+              "Terminate": {
+                "runAfter": {},
+                "metadata": {
+                  "operationMetadataId": "1b519dc5-4abd-4813-b0ff-fcc970d705c3"
+                },
+                "type": "Terminate",
+                "inputs": {
+                  "runStatus": "Cancelled"
+                }
+              }
+            }
+          },
+          "expression": {
+            "equals": [
+              "@outputs('Compose_State_Code')",
+              1
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "382f06c3-4c8f-486e-ab88-e740293b0886"
+          },
+          "type": "If"
+        },
+        "Initialize_variable": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "4288abc6-d621-4090-abc3-7677facb6850"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "StakeholderArray",
+                "type": "array"
+              }
+            ]
+          }
+        },
+        "Initialize_variable_2": {
+          "runAfter": {
+            "Initialize_variable": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "1fa7a0c9-6568-4540-a0cb-5f638eb6bf68"
+          },
+          "type": "InitializeVariable",
+          "inputs": {
+            "variables": [
+              {
+                "name": "ProductArray",
+                "type": "array"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

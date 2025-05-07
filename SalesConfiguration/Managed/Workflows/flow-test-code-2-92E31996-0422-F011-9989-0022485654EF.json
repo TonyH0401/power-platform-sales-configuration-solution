@@ -1,0 +1,241 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_commondataserviceforapps": {
+        "runtimeSource": "embedded",
+        "connection": {
+          "connectionReferenceLogicalName": "crff8_sharedcommondataserviceforapps_f0f15"
+        },
+        "api": {
+          "name": "shared_commondataserviceforapps"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "6b23d405-75c2-420f-829b-1479e6847ba1"
+          },
+          "type": "Request",
+          "kind": "Http",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "account": {
+                  "type": "string"
+                },
+                "contact": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "method": "POST",
+            "triggerAuthenticationType": "All"
+          }
+        }
+      },
+      "actions": {
+        "Parse_JSON_For_Account_And_Contact": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "3bb1731e-2c7f-4533-9062-bf18cd61bb95"
+          },
+          "type": "ParseJson",
+          "inputs": {
+            "content": "@triggerBody()",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "account": {
+                  "type": "string"
+                },
+                "contact": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "Response": {
+          "runAfter": {
+            "Compose_Scope_Relate_Row_Result": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "15e0005a-495a-40e8-b73f-205bdc2634ca"
+          },
+          "type": "Response",
+          "kind": "Http",
+          "inputs": {
+            "statusCode": 200,
+            "body": {
+              "success": true,
+              "message": "@outputs('Compose_Scope_Relate_Row_Result')"
+            }
+          }
+        },
+        "Compose_account": {
+          "runAfter": {
+            "Parse_JSON_For_Account_And_Contact": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "95efc0bc-5bac-4b3f-ad4a-aba736c01d18"
+          },
+          "type": "Compose",
+          "inputs": "@body('Parse_JSON_For_Account_And_Contact')?['account']"
+        },
+        "Get_an_account_by_ID": {
+          "runAfter": {
+            "Compose_account": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "88d894ab-abb7-4a32-bc89-2a611f793946"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_commondataserviceforapps",
+              "operationId": "GetItem",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+            },
+            "parameters": {
+              "entityName": "crff8_scaccounts",
+              "recordId": "@outputs('Compose_account')"
+            },
+            "authentication": "@parameters('$authentication')"
+          }
+        },
+        "Scope_Relate_Row": {
+          "actions": {
+            "Apply_to_each": {
+              "foreach": "@body('Parse_JSON_For_Account_And_Contact')?['contact']",
+              "actions": {
+                "Compose_contact": {
+                  "runAfter": {},
+                  "metadata": {
+                    "operationMetadataId": "7e558680-0470-4ea8-9b57-d993ed1bf061"
+                  },
+                  "type": "Compose",
+                  "inputs": "@items('Apply_to_each')"
+                },
+                "Get_a_contact_by_ID": {
+                  "runAfter": {
+                    "Compose_contact": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "530e3eac-111e-43e1-a0e8-455431f5657b"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "GetItem",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "crff8_sccontacts",
+                      "recordId": "@outputs('Compose_contact')"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Relate_rows": {
+                  "runAfter": {
+                    "Get_a_contact_by_ID": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "7ba9394d-1f15-4f2f-950a-33ccd7c68288"
+                  },
+                  "type": "OpenApiConnection",
+                  "inputs": {
+                    "host": {
+                      "connectionName": "shared_commondataserviceforapps",
+                      "operationId": "AssociateEntities",
+                      "apiId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
+                    },
+                    "parameters": {
+                      "entityName": "crff8_scaccounts",
+                      "recordId": "@outputs('Get_an_account_by_ID')?['body/crff8_scaccountid']",
+                      "associationEntityRelationship": "crff8_SCContact_crff8_SCAccount_crff8_SCAccount",
+                      "item/@odata.id": "@outputs('Get_a_contact_by_ID')?['body/@odata.id']"
+                    },
+                    "authentication": "@parameters('$authentication')"
+                  }
+                },
+                "Compose_Relate_Row_Result": {
+                  "runAfter": {
+                    "Relate_rows": [
+                      "Succeeded"
+                    ]
+                  },
+                  "metadata": {
+                    "operationMetadataId": "baf4ad54-1a64-4d51-a514-8983fdbe44f5"
+                  },
+                  "type": "Compose",
+                  "inputs": "@outputs('Relate_rows')"
+                }
+              },
+              "runAfter": {},
+              "metadata": {
+                "operationMetadataId": "7aca1f0b-c216-493b-9fde-e226dfcd4774"
+              },
+              "type": "Foreach"
+            }
+          },
+          "runAfter": {
+            "Get_an_account_by_ID": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9bdecc14-387f-43c3-baf5-90b74a3b2cc1"
+          },
+          "type": "Scope"
+        },
+        "Compose_Scope_Relate_Row_Result": {
+          "runAfter": {
+            "Scope_Relate_Row": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "9d93c1e0-1cdc-4d6f-a291-bce5a4ba5d63"
+          },
+          "type": "Compose",
+          "inputs": "@result('Scope_Relate_Row')"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{133f816c-fb37-4750-8ca0-ddcaf9da4f2f}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{a86cab7a-2fdd-411a-b258-305cba5b986c}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="50%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{a7d4b971-f578-4479-80da-be64982b8a3f}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{4bf9e627-e6ca-4262-ab4a-fe1f20eb1b5e}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="crff8_scaccountnumber" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="crff8_scaccountnumber" disabled="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ad38efb2-1178-4246-9fb7-6d5dae80b00b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="crff8_scaccountname" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="crff8_scaccountname" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{2cf22692-398a-44a5-8805-07764c4b6fba}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="crff8_scaccountstatus" classid="{3EF39988-22BB-4F0B-BBBE-64B5A3748AEE}" datafieldname="crff8_scaccountstatus" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{08519765-5cbb-40a4-a945-69c942f2a335}" colspan="1" rowspan="1" visible="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9d8e3935-1a16-4d25-9d11-4db22ffaca1d}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="crff8_scperson" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="crff8_scperson" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell locklevel="0" id="{87e09dfe-30fb-4989-9326-181b1cf77b73}" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="New QV control 1745131844896" languagecode="1033" />
+                        </labels>
+                        <control id="QuickviewControl1745131844896" classid="{5C5600E0-1D6E-4205-A272-BE80DA87FD42}" datafieldname="crff8_scperson">
+                          <parameters>
+                            <DisplayAsCustomer360Tile>false</DisplayAsCustomer360Tile>
+                            <QuickForms>&lt;QuickFormIds&gt;&lt;QuickFormId entityname="crff8_scperson"&gt;7d78eda2-b31d-f011-998a-000d3a083fb8&lt;/QuickFormId&gt;&lt;/QuickFormIds&gt;</QuickForms>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_4" id="76d40c9f-413b-40a0-9dfd-95b170b047e0" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="PCF section" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{0fc872e1-5865-4e5f-b8e7-6cd24bde68c3}" colspan="1" rowspan="1" showlabel="false">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="crff8_scaccountnumber" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="crff8_scaccountnumber" uniqueid="{b2e64a8b-4a94-4f69-bd2e-1608e4c730a6}" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+            <column width="50%">
+              <sections>
+                <section name="_section_282" id="cf0f63f4-14b1-4bd1-b20d-7a87a323cfe8" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Many-to-many subgrid" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell locklevel="0" id="{959e283d-eaf3-48d1-b890-0262a555b97e}" rowspan="4" colspan="1" auto="false">
+                        <labels>
+                          <label description="New SG control 1745147534778" languagecode="1033" />
+                        </labels>
+                        <control indicationOfSubgrid="true" id="Subgrid_new_1" classid="{E7A81278-8635-4D9E-8D4D-59480B391C5B}">
+                          <parameters>
+                            <RecordsPerPage>4</RecordsPerPage>
+                            <AutoExpand>Fixed</AutoExpand>
+                            <EnableQuickFind>false</EnableQuickFind>
+                            <EnableViewPicker>false</EnableViewPicker>
+                            <EnableChartPicker>true</EnableChartPicker>
+                            <ChartGridMode>All</ChartGridMode>
+                            <RelationshipName>crff8_SCContact_crff8_SCAccount_crff8_SCAccount</RelationshipName>
+                            <TargetEntityType>crff8_sccontact</TargetEntityType>
+                            <ViewId>{2FC7C5D4-8112-4EC5-9D25-68AA7A18645F}</ViewId>
+                            <ViewIds>{2FC7C5D4-8112-4EC5-9D25-68AA7A18645F}</ViewIds>
+                          </parameters>
+                        </control>
+                      </cell>
+                    </row>
+                    <row />
+                    <row />
+                    <row />
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{eef75242-6e93-4f13-aa53-a18cc4c72c3d}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{069c8d65-e510-47cc-8fea-f7bbbac05c82}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{37ae620b-4573-43e3-a638-e8c7fbeac462}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{66ddac33-f88b-4884-bbc3-0f82371f6d0e}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{80275b0c-e43d-4a1a-a7a3-8baa30d516c8}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{7c55a203-a8bb-4e1a-ad38-d4c639e121a1}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{e8d08b5f-aedb-4e50-b4d9-0dd261c69c6f}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{8f88497d-abb8-4b8c-9b1e-f9759c0bf1ab}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+      <controlDescriptions>
+        <controlDescription forControl="{b2e64a8b-4a94-4f69-bd2e-1608e4c730a6}">
+          <customControl id="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}">
+            <parameters>
+              <datafieldname>crff8_scaccountnumber</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl id="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}">
+            <parameters>
+              <datafieldname>crff8_scaccountnumber</datafieldname>
+            </parameters>
+          </customControl>
+          <customControl formFactor="0" name="crff8_SampleNamespace.LinearInputControl">
+            <parameters>
+              <sampleProperty type="SingleLine.Text">crff8_scaccountnumber</sampleProperty>
+              <sampleText type="SingleLine.Text">crff8_scaccountid</sampleText>
+            </parameters>
+          </customControl>
+          <customControl formFactor="2" name="crff8_SampleNamespace.LinearInputControl">
+            <parameters>
+              <sampleProperty type="SingleLine.Text">crff8_scaccountnumber</sampleProperty>
+              <sampleText type="SingleLine.Text">crff8_scaccountid</sampleText>
+            </parameters>
+          </customControl>
+          <customControl formFactor="1" name="crff8_SampleNamespace.LinearInputControl">
+            <parameters>
+              <sampleProperty type="SingleLine.Text">crff8_scaccountnumber</sampleProperty>
+              <sampleText type="SingleLine.Text">crff8_scaccountid</sampleText>
+            </parameters>
+          </customControl>
+        </controlDescription>
+      </controlDescriptions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

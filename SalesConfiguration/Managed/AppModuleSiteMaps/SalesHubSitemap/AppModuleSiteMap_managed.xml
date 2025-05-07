@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppModuleSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SiteMapUniqueName>SalesHubSitemap</SiteMapUniqueName>
+  <EnableCollapsibleGroups>False</EnableCollapsibleGroups>
+  <ShowHome>True</ShowHome>
+  <ShowPinned>True</ShowPinned>
+  <ShowRecents>True</ShowRecents>
+  <SiteMap IntroducedVersion="7.0.0.0">
+    <Area IntroducedVersion="7.0.0.0" Icon="/WebResources/msdyn_/Images/Area_Default_Icon.png" Id="Enterprise_Sales" ResourceId="Area_Sales" DescriptionResourceId="Sales_Description" ShowGroups="true" ordinalvalue="0">
+      <Group Id="Marketing" ResourceId="Area_Marketing" DescriptionResourceId="Marketing_Description" IntroducedVersion="9.0.0.0" IsProfile="false" ToolTipResourseId="Marketing_ToolTip" ordinalvalue="4" solutionaction="Modified">
+        <SubArea Id="nav_lists" DescriptionResourceId="MarketingList_SubArea_Description" IntroducedVersion="9.0.0.0" Entity="list" AvailableOffline="true" PassParams="false" ToolTipResourseId="MarketingList_SubArea_ToolTip" ordinalvalue="0" solutionaction="Modified" />
+        <SubArea Id="nav_campaigns" DescriptionResourceId="Campaign_Description" IntroducedVersion="9.0.0.0" Entity="campaign" AvailableOffline="true" PassParams="false" ToolTipResourseId="Campaign_ToolTip" ordinalvalue="1" solutionaction="Modified" />
+        <SubArea Id="nav_minicamps" DescriptionResourceId="Quick_Campaign_Description" IntroducedVersion="9.0.0.0" Entity="bulkoperation" AvailableOffline="true" PassParams="false" ToolTipResourseId="Quick_Campaign_ToolTip" ordinalvalue="2" solutionaction="Modified" />
+      </Group>
+      <Group Id="Service" ResourceId="SitemapDesigner.NewGroup" IsProfile="false" ToolTipResourseId="SitemapDesigner.Unknown" ordinalvalue="6">
+        <SubArea Id="subarea_866f6215" Icon="/_imgs/imagestrips/transparent_spacer.gif" Entity="crff8_stakeholder" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" AvailableOffline="true" PassParams="false" Sku="All,OnPremise,Live,SPLA" ordinalvalue="1" solutionaction="Added" />
+      </Group>
+    </Area>
+    <Area Id="Sales_Settings_Area" Icon="$webresource:Sales/_imgs/saleAdminSetting/SettingsIcon.svg" VectorIcon="$webresource:Sales/_imgs/saleAdminSetting/SettingsIcon.svg" ResourceId="Area_Sales_Settings" IntroducedVersion="9.0.0" ordinalvalue="1">
+      <Group Id="GeneralSettingsGroup" IsProfile="false" ToolTipResourseId="SitemapDesigner.Unknown" ordinalvalue="1" solutionaction="Modified" />
+      <Group Id="PlaybookManagementGroup" IsProfile="false" ToolTipResourseId="SitemapDesigner.Unknown" ordinalvalue="3" solutionaction="Modified" />
+      <Group Id="SalesSettingsGrp" IsProfile="false" ToolTipResourseId="SitemapDesigner.Unknown" ordinalvalue="4" solutionaction="Modified" />
+      <Group Id="ProductCatalogGrp" IsProfile="false" ToolTipResourseId="SitemapDesigner.Unknown" ordinalvalue="5" solutionaction="Modified" />
+      <Group Id="GoalManagementGrp" IsProfile="false" ToolTipResourseId="SitemapDesigner.Unknown" ordinalvalue="6" solutionaction="Modified" />
+      <Group Id="AppExtensionsGrp" IsProfile="false" ToolTipResourseId="SitemapDesigner.Unknown" ordinalvalue="7" solutionaction="Modified" />
+    </Area>
+    <Area Id="Sales_Insights_Settings_Area" Icon="$webresource:Sales/_imgs/saleAdminSetting/SettingsIcon.svg" VectorIcon="$webresource:Sales/_imgs/saleAdminSetting/SettingsIcon.svg" ResourceId="Area_Sales_Insights_Settings" IntroducedVersion="9.0.0" ordinalvalue="2">
+      <Group Id="SalesInsightsGrp" IsProfile="false" ToolTipResourseId="SitemapDesigner.Unknown" ordinalvalue="0" solutionaction="Modified" />
+    </Area>
+    <Area Id="Sales_Personal_Settings_Area" Icon="$webresource:Sales/_imgs/saleAdminSetting/SettingsIcon.svg" VectorIcon="$webresource:Sales/_imgs/saleAdminSetting/SettingsIcon.svg" ResourceId="Area_Sales_Personal_Settings" IntroducedVersion="9.0.0" ordinalvalue="3">
+      <Group Id="SalesPersonalSettingsGrp" IsProfile="false" ToolTipResourseId="SitemapDesigner.Unknown" ordinalvalue="0" solutionaction="Modified" />
+    </Area>
+    <Area Id="HLP" ResourceId="Sales_Area_Help" ShowGroups="true" Icon="/_imgs/icn_help16.png" DescriptionResourceId="Sales_Help_Area_Description" IntroducedVersion="7.0.0.0" ordinalvalue="4">
+      <Group Id="HLP_GRP" ResourceId="Sales_Group_Help" DescriptionResourceId="Sales_Help_Description" IntroducedVersion="7.0.0.0" IsProfile="false" ToolTipResourseId="Help_ToolTip" ordinalvalue="0" solutionaction="Modified">
+        <SubArea Id="Help_Resource_Center" ResourceId="Sales_Area_CustomerCenter" DescriptionResourceId="ResourceCenter_Area_Description" Url="https://go.microsoft.com/fwlink/p/?linkid=853224" IntroducedVersion="7.0.0.0" AvailableOffline="false" PassParams="false" ToolTipResourseId="ResourceCenter_Area_ToolTip" ordinalvalue="0" solutionaction="Modified" />
+      </Group>
+    </Area>
+  </SiteMap>
+  <LocalizedNames>
+    <LocalizedName description="Sales Hub" languagecode="1033" />
+  </LocalizedNames>
+</AppModuleSiteMap>
