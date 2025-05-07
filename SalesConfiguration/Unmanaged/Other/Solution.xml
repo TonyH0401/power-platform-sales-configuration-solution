@@ -105,6 +105,8 @@
       <RootComponent type="80" schemaName="crff8_SalesConfiguration" behavior="0" />
       <RootComponent type="80" schemaName="crff8_TestingPlugin" behavior="0" />
       <RootComponent type="80" schemaName="msdynce_saleshub" behavior="0" />
+      <RootComponent type="91" id="{119d68be-aa8f-4739-80ce-069dc9d66f91}" schemaName="ShOpportunity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cdd07c8ea0f44b2d" behavior="0" />
+      <RootComponent type="92" id="{91ac4144-ac1e-f011-9989-000d3aa28482}" behavior="0" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SdkMessageProcessingStep Name="ShOpportunity.ShOpportunityDuplicate: crff8_BoundActionOpportunity of opportunity" SdkMessageProcessingStepId="{91ac4144-ac1e-f011-9989-000d3aa28482}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SdkMessageId>345deb67-a91e-f011-998a-000d3a083fb8</SdkMessageId>
+  <PluginTypeName>ShOpportunity.ShOpportunityDuplicate, ShOpportunity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cdd07c8ea0f44b2d</PluginTypeName>
+  <PluginTypeId>0c6df157-47e8-4fb9-81b0-96c14e91857c</PluginTypeId>
+  <PrimaryEntity>opportunity</PrimaryEntity>
+  <AsyncAutoDelete>0</AsyncAutoDelete>
+  <FilteringAttributes></FilteringAttributes>
+  <InvocationSource>0</InvocationSource>
+  <Mode>0</Mode>
+  <Rank>1</Rank>
+  <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+  <Stage>40</Stage>
+  <IsCustomizable>1</IsCustomizable>
+  <IsHidden>0</IsHidden>
+  <SupportedDeployment>0</SupportedDeployment>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <SdkMessageProcessingStepImages />
+</SdkMessageProcessingStep>

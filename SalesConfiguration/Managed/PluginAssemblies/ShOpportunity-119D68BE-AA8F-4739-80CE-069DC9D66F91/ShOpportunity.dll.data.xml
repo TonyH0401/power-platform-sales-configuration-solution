@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PluginAssembly FullName="ShOpportunity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cdd07c8ea0f44b2d" PluginAssemblyId="119d68be-aa8f-4739-80ce-069dc9d66f91" CustomizationLevel="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IsolationMode>2</IsolationMode>
+  <SourceType>0</SourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <FileName>/PluginAssemblies/ShOpportunity-119D68BE-AA8F-4739-80CE-069DC9D66F91/ShOpportunity.dll</FileName>
+  <PluginTypes>
+    <PluginType AssemblyQualifiedName="ShOpportunity.ShOpportunityDuplicate, ShOpportunity, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cdd07c8ea0f44b2d" PluginTypeId="0c6df157-47e8-4fb9-81b0-96c14e91857c" Name="ShOpportunity.ShOpportunityDuplicate">
+      <FriendlyName>b3bf22f4-7426-466a-9db5-023ab1a6e56e</FriendlyName>
+    </PluginType>
+  </PluginTypes>
+</PluginAssembly>
