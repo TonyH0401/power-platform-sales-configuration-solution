@@ -196,11 +196,11 @@
                   <rows>
                     <row />
                     <row>
-                      <cell locklevel="0" id="{b37f907b-2c76-42ca-b22f-9e90ca5bd3d0}" colspan="1" rowspan="1" showlabel="false" ordinalvalue="10000">
+                      <cell locklevel="0" id="{2096f35d-3166-4606-8886-28e86c0a9a7f}" colspan="1" rowspan="1" showlabel="false" ordinalvalue="10000">
                         <labels>
                           <label description="Topic" languagecode="1033" />
                         </labels>
-                        <control id="name" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="name" uniqueid="{e51afb1c-73d4-466f-9401-2c6d9c82ec03}" />
+                        <control id="name" classid="{F9A8A302-114E-466A-B582-6771B2AE0D92}" datafieldname="name" uniqueid="{22161a19-b119-472c-a833-037e912a857c}" />
                       </cell>
                     </row>
                   </rows>
@@ -364,7 +364,7 @@
         </controlDescription>
         <controlDescription forControl="{89cdfa42-12d4-4c8b-8a0d-009ce7e0332d}" solutionaction="Removed" />
         <controlDescription forControl="{89cdfa42-12d4-4c8b-8a0d-009ce7e0332e}" solutionaction="Removed" />
-        <controlDescription forControl="{e51afb1c-73d4-466f-9401-2c6d9c82ec03}" solutionaction="Added">
+        <controlDescription forControl="{22161a19-b119-472c-a833-037e912a857c}" solutionaction="Added">
           <customControl id="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}">
             <parameters>
               <datafieldname>name</datafieldname>
